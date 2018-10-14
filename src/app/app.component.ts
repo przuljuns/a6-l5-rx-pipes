@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
-import { take /*, map */} from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +12,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     const obs = interval(1000)
-                .pipe(take(3));
-                // .pipe(take(3), map(v => (v + 1)));
+                // .pipe(take(3));
+                .pipe(take(3), map(v => (v + 1)));
                 // .pipe(take(3), map(v => new Date()));
     obs.subscribe(value => console.log('Subscriber ' + value));
   }
